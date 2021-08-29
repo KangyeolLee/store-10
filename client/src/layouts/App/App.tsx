@@ -33,7 +33,6 @@ import useGlobalTheme from '@/hooks/useGlobalTheme';
 import useModal from '@/hooks/useModal';
 import MissionModal from '@/components/Shared/Modal/MissionModal';
 import useMission from '@/hooks/useMission';
-import { notify } from '@/components/Shared/Toastify';
 
 const App = () => {
   const [themeMode, toggleMode, themeString] = useGlobalTheme();
@@ -55,7 +54,7 @@ const App = () => {
   useEffect(() => {
     if (user) {
       setLoading(false);
-      if(!user.is_oauth && user.id !== 36) {
+      if (!user.is_oauth && user.id !== 36) {
         setMissionList('login', true);
       }
     }
