@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /var/www/html
+    overwrite: yes
+permissions:
+  - object: /var/www/html
+    owner: root
+    group: root
+    mode: 755

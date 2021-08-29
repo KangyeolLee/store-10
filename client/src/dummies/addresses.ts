@@ -1,0 +1,32 @@
+export default [
+  {
+    id: 1,
+    name: '슑과잌붸흐벤',
+    address: '서울특별시 광진구 화양동 아차산로29길 57',
+    phone: '02-461-1719',
+    message: '부재시 문 앞에 놔주세요!',
+    isDefault: true,
+    postcode: '05018',
+    detailAddress: '화양시장 제일곱창',
+  },
+  {
+    id: 2,
+    name: '슑과잌붸흐벤',
+    address: '서울특별시 광진구 화양동 아차산로29길 57',
+    phone: '02-461-1719',
+    message: '부재시 문 앞에 놔주세요!',
+    isDefault: false,
+    postcode: '05018',
+    detailAddress: '화양시장 제일곱창',
+  },
+  {
+    id: 3,
+    name: '슑과잌붸흐벤',
+    address: '서울특별시 광진구 화양동 아차산로29길 57',
+    phone: '02-461-1719',
+    message: '부재시 문 앞에 놔주세요!',
+    isDefault: false,
+    postcode: '05018',
+    detailAddress: '화양시장 제일곱창',
+  },
+];
