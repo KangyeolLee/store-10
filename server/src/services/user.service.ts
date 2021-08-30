@@ -118,6 +118,29 @@ class UserService {
       code,
     });
   }
+
+  async getOrCreateMissionCoupon(user_id: number) {
+    const issuedCouponRepo = IssuedCouponRepository();
+    const MISSION_COUPON_ID = 3;
+
+    const missionCupon = await issuedCouponRepo.findIssuedCoupon({
+      user_id,
+      coupon_id: MISSION_COUPON_ID,
+    });
+
+    if (missionCupon) {
+      return missionCupon.code;
+    }
+
+    const couponCode = randomUUID();
+    await issuedCouponRepo.createIssuedCoupon({
+      coupon_id: MISSION_COUPON_ID,
+      code: couponCode,
+      user_id,
+    });
+
+    return couponCode;
+  }
 }
 
 export default new UserService();

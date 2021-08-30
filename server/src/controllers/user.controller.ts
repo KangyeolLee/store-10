@@ -1,7 +1,6 @@
 import ApiResponse from '@/api/middlewares/response-format';
 import HttpStatusCode from '@/types/statusCode';
 import { Request, Response } from 'express';
-import UserRepository from '@/repositories/user.repository';
 import jwtService from '@/services/jwt.service';
 import userService from '@/services/user.service';
 
@@ -104,6 +103,18 @@ class UserController {
     });
     if (result) {
       ApiResponse(res, HttpStatusCode.NO_CONTENT);
+    } else {
+      ApiResponse(res, HttpStatusCode.BAD_REQUEST, '쿠폰 등록에 실패했습니다');
+    }
+  }
+
+  async getOrCreateMissionCoupon(req: Request, res: Response) {
+    const user_id = req.user?.id;
+    const coupon = await userService.getOrCreateMissionCoupon(user_id);
+    if (coupon) {
+      ApiResponse(res, HttpStatusCode.OK, '미션 쿠폰 조회에 성공했습니다', {
+        coupon,
+      });
     } else {
       ApiResponse(res, HttpStatusCode.BAD_REQUEST, '쿠폰 등록에 실패했습니다');
     }
