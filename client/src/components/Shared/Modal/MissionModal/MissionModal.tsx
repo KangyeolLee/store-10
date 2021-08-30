@@ -41,7 +41,7 @@ const MissionModal = ({ toggleModal }: IProps) => {
   const missionCompleteStatus = Math.floor(
     (Object.keys(missionList).length / totalMissionLength) * 100
   );
-  const { data } = useGetMissionCoupon(true);
+  const { data } = useGetMissionCoupon(missionCompleteStatus === 100);
   const isCompleteClassName = (val: boolean | undefined) => {
     return val ? 'complete' : '';
   };
