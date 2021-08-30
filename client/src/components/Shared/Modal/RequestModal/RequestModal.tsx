@@ -26,6 +26,7 @@ const RequestModal = ({ toggleModal, selected }: RequestModalProps) => {
   const [secret, setSecret] = useState(false);
   const [contentError, setContentError] = useState(false);
   const [titleError, setTitleError] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setMissionList] = useMission();
   const { mutate } = useCreateQuestion();
 

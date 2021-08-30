@@ -27,6 +27,7 @@ const ReviewUpdateModal = ({ toggleModal, selected }: ReviewModalProps) => {
   const [S3Preview, setS3Preview] = useState<string[]>([]);
   const [contentError, setContentError] = useState(false);
   const [ratingError, setRatingError] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setMissionList] = useMission();
   const { mutate: updateReview } = useUpdateReview();
   const { mutate: deleteReviewPreview } = useDeleteReviewImage();

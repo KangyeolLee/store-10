@@ -26,6 +26,7 @@ const ReviewModal = ({ toggleModal, selected }: ReviewModalProps) => {
   const [content, setContent] = useState('');
   const [contentError, setContentError] = useState(false);
   const [ratingError, setRatingError] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setMissionList] = useMission();
   const { mutate } = useCreateReview();
   const {
