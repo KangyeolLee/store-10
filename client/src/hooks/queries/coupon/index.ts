@@ -30,5 +30,6 @@ export const useRegisterUserCoupon = () => {
 export const useGetMissionCoupon = (isComplete: boolean) => {
   return useQuery('missionCoupon', () => getMissionCoupon(), {
     enabled: isComplete,
+    cacheTime: 0,
   });
 };
