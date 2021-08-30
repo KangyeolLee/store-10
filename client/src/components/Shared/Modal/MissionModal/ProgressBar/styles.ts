@@ -8,7 +8,7 @@ export const ChartBar = styled.div<ProgressProps>`
   .bar {
     position: relative;
     width: 100%;
-    height: 2rem;
+    height: 1.5rem;
     border-radius: 1rem;
     background-color: #ededed;
 

@@ -101,6 +101,7 @@ export const Mission = styled.li`
 export const MissionStatus = styled.div`
   display: flex;
   align-items: center;
+  gap: 1.5rem;
   ${({ theme }) => theme.fontSize.l}
   color: ${({ theme }) => theme.color['text-color']};
   border-radius: 1rem;
@@ -122,13 +123,7 @@ export const MissionStatus = styled.div`
 
     ${({ theme }) => theme.mediaScreen.tablet`
       width: 100%;
-      margin-top: 3rem;
     `}
-    .bar {
-      ${({ theme }) => theme.mediaScreen.btw_tab_mob`
-        height: 1.5rem;
-      `}
-    }
   }
 
   .recent-status {
