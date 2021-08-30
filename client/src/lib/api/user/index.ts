@@ -6,6 +6,8 @@ export const getUserCoupons = async (valid?: string) =>
     `/user/coupon${valid ? '?is_valid=true' : ''}`
   );
 
-export const useRegisterCoupon = async (coupon: string) => {
+export const useRegisterCoupon = async (coupon: string) =>
   await client.post('/user/coupon', { coupon });
-};
+
+export const getMissionCoupon = async () =>
+  await client.get<{ coupon: string }>('/user/coupon/mission');

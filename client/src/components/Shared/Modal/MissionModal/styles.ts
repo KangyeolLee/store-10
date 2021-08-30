@@ -142,4 +142,11 @@ export const MissionStatus = styled.div`
   ${({ theme }) => theme.mediaScreen.tablet`
     flex-direction: column;  
   `}
+
+  span {
+    width: 50%;
+    ${({ theme }) => theme.mediaScreen.tablet`
+      width: 100%;
+    `}
+  }
 `;

@@ -23,6 +23,7 @@ import ProgressBar from './ProgressBar';
 import * as S from './styles';
 import useGlobalTheme from '@/hooks/useGlobalTheme';
 import { MISSIONS } from '@/contstants';
+import { useGetMissionCoupon } from '@/hooks/queries/coupon';
 
 interface IProps {
   toggleModal: () => void;
@@ -36,20 +37,17 @@ const MissionModal = ({ toggleModal }: IProps) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, __, themeString] = useGlobalTheme();
   const [missionList] = useMission();
-
   const totalMissionLength = Object.keys(MISSIONS).length; // 추가한 미션 개수만큼 개수를 추가해주시면 됩니다.
   const missionCompleteStatus = Math.floor(
     (Object.keys(missionList).length / totalMissionLength) * 100
   );
-
+  const { data } = useGetMissionCoupon(missionCompleteStatus === 100);
   const isCompleteClassName = (val: boolean | undefined) => {
     return val ? 'complete' : '';
   };
-
   const recentMission: MissionListKeys | null = localStorage.getItem(
     'recentMission'
   ) as MissionListKeys | null;
-
   return (
     <S.MissionLayout width="80%" height="80%" toggleModal={toggleModal}>
       <Title className="title" level={2}>
@@ -69,6 +67,14 @@ const MissionModal = ({ toggleModal }: IProps) => {
           percent={missionCompleteStatus}
         />
       </S.MissionStatus>
+      {data && (
+        <S.MissionStatus>
+          <span>
+            🎉축하합니다!🎉 <br /> 미션 완료 보상으로 쿠폰을 드립니다!
+          </span>
+          <span className="percent-guage">{data?.coupon}</span>
+        </S.MissionStatus>
+      )}
       <S.MissionList className={themeString}>
         <S.Mission className={isCompleteClassName(missionList.login)}>
           <UserSVG />

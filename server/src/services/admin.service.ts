@@ -1,19 +1,27 @@
 import CouponRepository from '@/repositories/coupon.repository';
-import jwtService from './jwt.service';
+import IssuedCouponRepository from '@/repositories/issuedCoupon.repository';
+import { randomUUID } from 'crypto';
 
 class AdminService {
-  async generateCoupon(coupon_id: number) {
+  async generateCoupon(coupon_id: number, user_id?: number) {
     const couponRepo = CouponRepository();
+    const issuedCouponRepo = IssuedCouponRepository();
+
     const coupon = await couponRepo.getCoupon(coupon_id);
 
     if (!coupon) {
       return null;
     }
 
-    return jwtService.generateCoupon({
-      coupon_id: coupon.id,
-      serial_number: `${coupon.id}-${new Date().getTime()}`,
+    const couponCode = randomUUID();
+
+    await issuedCouponRepo.createIssuedCoupon({
+      coupon_id,
+      code: couponCode,
+      ...(user_id ? { user_id } : {}),
     });
+
+    return couponCode;
   }
 }
 

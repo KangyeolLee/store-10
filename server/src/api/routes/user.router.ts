@@ -38,6 +38,11 @@ router.post(
   wrapAsync(UserController.changePassword)
 );
 
+router.get(
+  '/coupon/mission',
+  authJWT,
+  wrapAsync(UserController.getOrCreateMissionCoupon)
+);
 router.get('/coupon', authJWT, wrapAsync(UserController.getCoupons));
 router.patch('/coupon', authJWT, wrapAsync(UserController.useCoupon));
 router.post('/coupon', authJWT, wrapAsync(UserController.registerCoupon));
