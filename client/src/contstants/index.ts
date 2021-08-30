@@ -148,4 +148,5 @@ export const MISSIONS = {
   imageView: '리뷰 이미지 클릭해 보기',
   noticeView: '공지사항 확인하기',
   hidden1: '마네킹 카테고리 들어가기',
+  hidden2: '상품재고 소수점 입력하기',
 };

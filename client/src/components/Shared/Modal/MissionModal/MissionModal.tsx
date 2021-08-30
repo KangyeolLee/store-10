@@ -136,6 +136,10 @@ const MissionModal = ({ toggleModal }: IProps) => {
           <MenuSVG className="fill" />
           {missionList.hidden1 ? MissionTemplate.hidden1 : '히든미션#1'}
         </S.Mission>
+        <S.Mission className={isCompleteClassName(missionList.hidden2)}>
+          <MenuSVG className="fill" />
+          {missionList.hidden2 ? MissionTemplate.hidden2 : '히든미션#2'}
+        </S.Mission>
       </S.MissionList>
     </S.MissionLayout>
   );
