@@ -100,6 +100,7 @@ const Card = ({
     }
 
     const addCart = () => {
+      setMissionList('addCart', true);
       addcartMutate(
         {
           count: 1,
@@ -114,7 +115,7 @@ const Card = ({
     };
 
     addCart();
-  }, [user, linkId, addcartMutate, toggleModal]);
+  }, [user, linkId, addcartMutate, toggleModal, setMissionList]);
 
   const Buttons = () =>
     !bottomDisplay || (

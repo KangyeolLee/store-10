@@ -36,7 +36,7 @@ export const MissionList = styled.ul`
     color: #dfdfdf;
     svg {
       stroke: #dfdfdf;
-      &.filled {
+      &.fill {
         fill: #dfdfdf;
       }
     }
@@ -45,7 +45,8 @@ export const MissionList = styled.ul`
     color: #7b7b7b;
     svg {
       stroke: #7b7b7b;
-      &.filled {
+
+      &.fill {
         fill: #7b7b7b;
       }
     }
@@ -87,10 +88,10 @@ export const Mission = styled.li`
 
   &.complete {
     color: ${({ theme }) => theme.color.primary};
-
     svg {
       stroke: ${({ theme }) => theme.color.primary};
-      &.filled {
+
+      &.fill {
         fill: ${({ theme }) => theme.color.primary};
       }
     }

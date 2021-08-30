@@ -234,7 +234,13 @@ export interface IMissionList {
   login?: boolean;
   bookmark?: boolean;
   moreDescription?: boolean;
-  shoppingCart?: boolean;
+  pay?: boolean;
+  addCart?: boolean;
+  checkDelivery?: boolean;
+  changeAddress?: boolean;
+  orderHistoryFilter?: boolean;
+  search?: boolean;
+  category?: boolean;
 }
 
 export type MissionListKeys = keyof IMissionList;

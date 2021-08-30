@@ -8,6 +8,7 @@ import {
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { IAddress } from '@/types/index';
 import { notify } from '@/components/Shared/Toastify';
+import useMission from '@/hooks/useMission';
 
 export const useGetAddresses = () => {
   return useQuery<IAddress[], Error>('address', getAddresses);
@@ -33,10 +34,12 @@ export const usePostAddress = () => {
 };
 
 export const useUpdateAddress = () => {
+  const [_, setMissionList] = useMission();
   const queryClient = useQueryClient();
   const mutation = useMutation(updateAddress, {
     onSuccess: () => {
       queryClient.invalidateQueries('address');
+      setMissionList('changeAddress', true);
       notify('success', '성공적으로 배송지를 변경하였습니다.');
     },
     onError: () => {
