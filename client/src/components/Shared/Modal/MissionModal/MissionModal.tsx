@@ -72,7 +72,7 @@ const MissionModal = ({ toggleModal }: IProps) => {
           <span>
             🎉축하합니다!🎉 <br /> 미션 완료 보상으로 쿠폰을 드립니다!
           </span>
-          <span className="percent-guage">{data?.coupon}</span>
+          <span className="coupon-number">{data?.coupon}</span>
         </S.MissionStatus>
       )}
       <S.MissionList className={themeString}>
