@@ -145,4 +145,6 @@ export const MISSIONS = {
   updateReview: '리뷰 수정하기',
   createQuestion: '문의 생성하기',
   updateQuestion: '문의 수정하기',
+  imageView: '리뷰 이미지 클릭해 보기',
+  noticeView: '공지사항 확인하기',
 };

@@ -245,6 +245,8 @@ export interface IMissionList {
   updateReview?: boolean;
   createQuestion?: boolean;
   updateQuestion?: boolean;
+  imageView?: boolean;
+  noticeView?: boolean;
 }
 
 export type MissionListKeys = keyof IMissionList;

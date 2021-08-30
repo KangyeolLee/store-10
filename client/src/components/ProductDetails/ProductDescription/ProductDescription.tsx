@@ -14,6 +14,7 @@ const ProductDescription = () => {
   const { id } = useParams().params;
   const [isLoaded, setIsLoaded] = useState(false);
   const { data, isLoading, error } = useGetProductById(id);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setMissionList] = useMission();
 
   if (error) {

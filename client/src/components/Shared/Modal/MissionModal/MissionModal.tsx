@@ -124,6 +124,14 @@ const MissionModal = ({ toggleModal }: IProps) => {
           <MenuSVG className="fill" />
           {MissionTemplate.updateQuestion}
         </S.Mission>
+        <S.Mission className={isCompleteClassName(missionList.imageView)}>
+          <MenuSVG className="fill" />
+          {MissionTemplate.imageView}
+        </S.Mission>
+        <S.Mission className={isCompleteClassName(missionList.noticeView)}>
+          <MenuSVG className="fill" />
+          {MissionTemplate.noticeView}
+        </S.Mission>
       </S.MissionList>
     </S.MissionLayout>
   );
