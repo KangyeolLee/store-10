@@ -6,9 +6,12 @@ import { CategoryList } from '@/recoil/category';
 import { useRecoilValue } from 'recoil';
 import { ISubCategory } from '@/types';
 import { LeftChevron } from '@/assets/svgs/index';
+import useMission from '@/hooks/useMission';
 
 const Category = () => {
   const { categoryId = '40' } = useParams().params;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setMissionList] = useMission();
   const categories = useRecoilValue(CategoryList);
   const ref = useRef<HTMLDivElement>(null);
   const { historyPush } = useHistory();
@@ -47,6 +50,12 @@ const Category = () => {
     },
     []
   );
+
+  useEffect(() => {
+    if (categoryId === '121') {
+      setMissionList('hidden1', true);
+    }
+  }, [categoryId, setMissionList]);
 
   return (
     <>

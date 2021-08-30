@@ -247,6 +247,7 @@ export interface IMissionList {
   updateQuestion?: boolean;
   imageView?: boolean;
   noticeView?: boolean;
+  hidden1?: boolean;
 }
 
 export type MissionListKeys = keyof IMissionList;
