@@ -143,4 +143,6 @@ export const MISSIONS = {
   category: '카테고리 이동하기',
   createReview: '리뷰 생성하기',
   updateReview: '리뷰 수정하기',
+  createQuestion: '문의 생성하기',
+  updateQuestion: '문의 수정하기',
 };

@@ -243,6 +243,8 @@ export interface IMissionList {
   category?: boolean;
   createReview?: boolean;
   updateReview?: boolean;
+  createQuestion?: boolean;
+  updateQuestion?: boolean;
 }
 
 export type MissionListKeys = keyof IMissionList;
