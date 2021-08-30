@@ -1,4 +1,4 @@
-import { HeartSVG, UserSVG } from '@/assets/svgs';
+import { CartSVG, HeartSVG, PlusSVG, UserSVG } from '@/assets/svgs';
 import useMission from '@/hooks/useMission';
 import { MissionListKeys } from '@/types';
 import React from 'react';
@@ -61,6 +61,14 @@ const MissionModal = ({ toggleModal }: IProps) => {
         <S.Mission className={isCompleteClassName(missionList.bookmark)}>
           <HeartSVG />
           {MissionTemplate.bookmark}
+        </S.Mission>
+        <S.Mission className={isCompleteClassName(missionList.moreDescription)}>
+          <PlusSVG className="filled plus" />
+          {MissionTemplate.moreDescription}
+        </S.Mission>
+        <S.Mission className={isCompleteClassName(missionList.shoppingCart)}>
+          <CartSVG className="filled" />
+          {MissionTemplate.shoppingCart}
         </S.Mission>
       </S.MissionList>
     </S.MissionLayout>
