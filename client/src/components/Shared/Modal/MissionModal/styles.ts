@@ -126,6 +126,17 @@ export const MissionStatus = styled.div`
     `}
   }
 
+  .coupon-number {
+    padding: 1rem;
+    background-color: ${({ theme }) => theme.color.body3};
+    border-radius: 1rem;
+    width: 50%;
+
+    ${({ theme }) => theme.mediaScreen.tablet`
+      width: 100%;
+    `}
+  }
+
   .recent-status {
     margin-top: 1rem;
     ${({ theme }) => theme.fontSize.m};
