@@ -141,4 +141,6 @@ export const MISSIONS = {
   orderHistoryFilter: '주문내역 필터 사용하기',
   search: '검색 하기',
   category: '카테고리 이동하기',
+  createReview: '리뷰 생성하기',
+  updateReview: '리뷰 수정하기',
 };

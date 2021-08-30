@@ -241,6 +241,8 @@ export interface IMissionList {
   orderHistoryFilter?: boolean;
   search?: boolean;
   category?: boolean;
+  createReview?: boolean;
+  updateReview?: boolean;
 }
 
 export type MissionListKeys = keyof IMissionList;

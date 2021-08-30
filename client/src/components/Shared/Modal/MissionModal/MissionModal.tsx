@@ -107,6 +107,15 @@ const MissionModal = ({ toggleModal }: IProps) => {
           <MenuSVG className="fill" />
           {MissionTemplate.category}
         </S.Mission>
+
+        <S.Mission className={isCompleteClassName(missionList.createReview)}>
+          <MenuSVG className="fill" />
+          {MissionTemplate.createReview}
+        </S.Mission>
+        <S.Mission className={isCompleteClassName(missionList.updateReview)}>
+          <MenuSVG className="fill" />
+          {MissionTemplate.updateReview}
+        </S.Mission>
       </S.MissionList>
     </S.MissionLayout>
   );

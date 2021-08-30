@@ -11,6 +11,7 @@ import { useDeleteReviewImage, useUpdateReview } from '@/hooks/queries/product';
 import { validateReview } from '@/utils/validator';
 import { compressImageFile } from '@/utils/helper';
 import { useGetSelectedReviewById } from '@/hooks/queries/product/index';
+import useMission from '@/hooks/useMission';
 
 interface ReviewModalProps {
   toggleModal: () => void;
@@ -26,6 +27,7 @@ const ReviewUpdateModal = ({ toggleModal, selected }: ReviewModalProps) => {
   const [S3Preview, setS3Preview] = useState<string[]>([]);
   const [contentError, setContentError] = useState(false);
   const [ratingError, setRatingError] = useState(false);
+  const [_, setMissionList] = useMission();
   const { mutate: updateReview } = useUpdateReview();
   const { mutate: deleteReviewPreview } = useDeleteReviewImage();
   const {
@@ -91,6 +93,7 @@ const ReviewUpdateModal = ({ toggleModal, selected }: ReviewModalProps) => {
 
     updateReview({ id: review.id, data: formData });
 
+    setMissionList('updateReview', true);
     toggleModal();
   };
 
