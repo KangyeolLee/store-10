@@ -15,9 +15,9 @@ class UserController {
       refreshToken,
     });
     const accessToken = jwtService.generate({ user_id, name, id, is_oauth });
-
     res.cookie('refreshToken', refreshToken, { path: '/', httpOnly: true });
     res.cookie('accessToken', accessToken, { path: '/', httpOnly: true });
+
     ApiResponse(
       res,
       HttpStatusCode.OK,
@@ -99,7 +99,7 @@ class UserController {
     const user_id = req.user?.id;
     const { coupon } = req.body;
     const result = await userService.registerCoupon({
-      couponToken: coupon,
+      code: coupon,
       user_id,
     });
     if (result) {
