@@ -133,6 +133,7 @@ export const DELIVERY_DISCOUNT_CONDITION = 30000;
 export const MISSIONS = {
   login: '일반 회원으로 로그인 하기',
   bookmark: '상품 찜하기',
+  moreDescription: '상품상세 정보 더보기',
   pay: '주문 완료하기',
   addCart: '장바구니에 상품 추가하기',
   checkDelivery: '주문 완료된 상품 배송조회',
@@ -140,4 +141,12 @@ export const MISSIONS = {
   orderHistoryFilter: '주문내역 필터 사용하기',
   search: '검색 하기',
   category: '카테고리 이동하기',
+  createReview: '리뷰 생성하기',
+  updateReview: '리뷰 수정하기',
+  createQuestion: '문의 생성하기',
+  updateQuestion: '문의 수정하기',
+  imageView: '리뷰 이미지 클릭해 보기',
+  noticeView: '공지사항 확인하기',
+  hidden1: '마네킹 카테고리 들어가기',
+  hidden2: '상품재고 소수점 입력하기',
 };

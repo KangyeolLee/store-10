@@ -45,6 +45,7 @@ export const MissionList = styled.ul`
     color: #7b7b7b;
     svg {
       stroke: #7b7b7b;
+
       &.fill {
         fill: #7b7b7b;
       }
@@ -79,12 +80,17 @@ export const Mission = styled.li`
     width: 2em;
     height: 2em;
     stroke-width: 1.5px;
+
+    &.resize {
+      height: 25px;
+    }
   }
 
   &.complete {
     color: ${({ theme }) => theme.color.primary};
     svg {
       stroke: ${({ theme }) => theme.color.primary};
+
       &.fill {
         fill: ${({ theme }) => theme.color.primary};
       }
@@ -95,6 +101,7 @@ export const Mission = styled.li`
 export const MissionStatus = styled.div`
   display: flex;
   align-items: center;
+  gap: 1.5rem;
   ${({ theme }) => theme.fontSize.l}
   color: ${({ theme }) => theme.color['text-color']};
   border-radius: 1rem;
@@ -116,13 +123,7 @@ export const MissionStatus = styled.div`
 
     ${({ theme }) => theme.mediaScreen.tablet`
       width: 100%;
-      margin-top: 3rem;
     `}
-    .bar {
-      ${({ theme }) => theme.mediaScreen.btw_tab_mob`
-        height: 1.5rem;
-      `}
-    }
   }
 
   .recent-status {

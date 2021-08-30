@@ -12,6 +12,7 @@ import {
   useGetSelectedQuestionById,
   useUpdateQuestion,
 } from '@/hooks/queries/product';
+import useMission from '@/hooks/useMission';
 
 interface RequestUpdateModalProps {
   toggleModal: () => void;
@@ -33,6 +34,8 @@ const RequestUpdateModal = ({
   const [secret, setSecret] = useState(false);
   const [contentError, setContentError] = useState(false);
   const [titleError, setTitleError] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setMissionList] = useMission();
   const { mutate } = useUpdateQuestion();
 
   useEffect(() => {
@@ -97,6 +100,7 @@ const RequestUpdateModal = ({
 
     mutate({ id: question?.id ?? 0, data: newQuestion });
 
+    setMissionList('updateQuestion', true);
     toggleModal();
   };
 

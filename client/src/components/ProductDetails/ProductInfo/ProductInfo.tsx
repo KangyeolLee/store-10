@@ -48,6 +48,7 @@ const ProductInfo = () => {
       },
       {
         onSuccess() {
+          setMissionList('addCart', true);
           toggleModal();
         },
       }

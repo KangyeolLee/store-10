@@ -33,9 +33,6 @@ export const Header = styled.div`
   background: ${({ theme }) => theme.color['background']};
   align-items: center;
   height: ${HEADER_HEIGHT}rem;
-  width: 95%;
-  max-width: 1050px;
-  padding: 1rem 0;
   margin: 0 auto;
 
   ${({ theme }) => theme.mediaScreen.mphone`
