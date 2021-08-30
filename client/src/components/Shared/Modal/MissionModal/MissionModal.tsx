@@ -9,6 +9,11 @@ import {
   PlusSVG,
   SearchSVG,
   MenuSVG,
+  RatingSVG,
+  InquerySVG,
+  HiddenSVG,
+  ImageViewSVG,
+  NoticeViewSVG,
 } from '@/assets/svgs';
 import useMission from '@/hooks/useMission';
 import { MissionListKeys } from '@/types';
@@ -74,7 +79,7 @@ const MissionModal = ({ toggleModal }: IProps) => {
           {MissionTemplate.bookmark}
         </S.Mission>
         <S.Mission className={isCompleteClassName(missionList.moreDescription)}>
-          <PlusSVG className="fill plus" />
+          <PlusSVG className="fill resize" />
           {MissionTemplate.moreDescription}
         </S.Mission>
         <S.Mission className={isCompleteClassName(missionList.addCart)}>
@@ -96,7 +101,7 @@ const MissionModal = ({ toggleModal }: IProps) => {
         <S.Mission
           className={isCompleteClassName(missionList.orderHistoryFilter)}
         >
-          <FilterSVG className="fill" />
+          <FilterSVG className="fill resize" />
           {MissionTemplate.orderHistoryFilter}
         </S.Mission>
         <S.Mission className={isCompleteClassName(missionList.search)}>
@@ -109,35 +114,36 @@ const MissionModal = ({ toggleModal }: IProps) => {
         </S.Mission>
 
         <S.Mission className={isCompleteClassName(missionList.createReview)}>
-          <MenuSVG className="fill" />
+          <RatingSVG className="fill" />
           {MissionTemplate.createReview}
         </S.Mission>
         <S.Mission className={isCompleteClassName(missionList.updateReview)}>
-          <MenuSVG className="fill" />
+          <RatingSVG className="fill" />
           {MissionTemplate.updateReview}
         </S.Mission>
         <S.Mission className={isCompleteClassName(missionList.createQuestion)}>
-          <MenuSVG className="fill" />
+          <InquerySVG className="fill" />
           {MissionTemplate.createQuestion}
         </S.Mission>
         <S.Mission className={isCompleteClassName(missionList.updateQuestion)}>
-          <MenuSVG className="fill" />
+          <InquerySVG className="fill" />
           {MissionTemplate.updateQuestion}
         </S.Mission>
+
         <S.Mission className={isCompleteClassName(missionList.imageView)}>
-          <MenuSVG className="fill" />
+          <ImageViewSVG className="fill" />
           {MissionTemplate.imageView}
         </S.Mission>
         <S.Mission className={isCompleteClassName(missionList.noticeView)}>
-          <MenuSVG className="fill" />
+          <NoticeViewSVG className="fill" />
           {MissionTemplate.noticeView}
         </S.Mission>
         <S.Mission className={isCompleteClassName(missionList.hidden1)}>
-          <MenuSVG className="fill" />
+          <HiddenSVG className="fill" />
           {missionList.hidden1 ? MissionTemplate.hidden1 : '히든미션#1'}
         </S.Mission>
         <S.Mission className={isCompleteClassName(missionList.hidden2)}>
-          <MenuSVG className="fill" />
+          <HiddenSVG className="fill" />
           {missionList.hidden2 ? MissionTemplate.hidden2 : '히든미션#2'}
         </S.Mission>
       </S.MissionList>

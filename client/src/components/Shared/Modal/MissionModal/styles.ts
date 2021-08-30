@@ -81,7 +81,7 @@ export const Mission = styled.li`
     height: 2em;
     stroke-width: 1.5px;
 
-    &.plus {
+    &.resize {
       height: 25px;
     }
   }

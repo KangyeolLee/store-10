@@ -41,3 +41,6 @@ export { default as MoneySVG } from '@/assets/svgs/money.svg';
 export { default as DeliverySVG } from '@/assets/svgs/delivery.svg';
 export { default as LocationSVG } from '@/assets/svgs/location.svg';
 export { default as FilterSVG } from '@/assets/svgs/filter.svg';
+export { default as ImageViewSVG } from '@/assets/svgs/tap.svg';
+export { default as NoticeViewSVG } from '@/assets/svgs/file.svg';
+export { default as HiddenSVG } from '@/assets/svgs/padlock.svg';
