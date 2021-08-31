@@ -159,7 +159,7 @@ $ npm run deploy
 
 ### [발표자료](https://drive.google.com/file/d/1pat5aa3HVz2G804rUe0QQdwyaIDfRdqF/view?usp=sharing)
 
-
+### [스토리북](https://611373999def0d003b206376-przpgpwgli.chromatic.com/)
 
 ## 👨‍👨‍👦‍👦  기여자
 
