@@ -61,6 +61,10 @@ export const ContentTitle = styled.div`
 export const Categories = styled.ul`
   margin: 0;
   padding: 0;
+  overflow-y: scroll;
+  max-height: 90vh;
+  padding-bottom: 4rem;
+
   ${({ theme }) => theme.fontSize.m};
   color: ${({ theme }) => theme.color['text-color']};
   li {
@@ -86,6 +90,10 @@ export const Categories = styled.ul`
         }
       }
     }
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
   }
 `;
 

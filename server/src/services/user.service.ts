@@ -2,11 +2,13 @@ import bcrypt from 'bcrypt-nodejs';
 import { User } from '@/entities/user.entity';
 import UserRepository from '@/repositories/user.repository';
 import UserCouponRepository from '@/repositories/userCoupon.repository';
+import IssuedCouponRepository from '@/repositories/issuedCoupon.repository';
 import CouponRepository from '@/repositories/coupon.repository';
 import jwtService from './jwt.service';
+import { randomUUID } from 'crypto';
 
 interface ICouponJWT {
-  serial_number: string;
+  code: string;
   coupon_id: number;
   iat: number;
 }
@@ -23,7 +25,7 @@ class UserService {
       user_id: createdUser.id,
       coupon_id: 1,
       is_valid: true,
-      serial_number: `1-${new Date().getTime()}`,
+      code: randomUUID(),
     });
 
     return createdUser;
@@ -85,35 +87,59 @@ class UserService {
     });
   }
 
-  async registerCoupon({ couponToken, user_id }) {
+  async registerCoupon({ code, user_id }) {
     const userCouponRepo = UserCouponRepository();
     const couponRepo = CouponRepository();
+    const issuedCouponRepo = IssuedCouponRepository();
 
-    const coupon = <ICouponJWT>jwtService.verify(couponToken);
-
-    if (!coupon) {
+    const issuedCoupon = await issuedCouponRepo.findIssuedCoupon({
+      code,
+    });
+    if (!issuedCoupon) {
       return null;
     }
 
     const isAlreadyRegistered = await userCouponRepo.getUserCoupon({
-      serial_number: coupon.serial_number,
+      code,
     });
-
     if (isAlreadyRegistered) {
       return null;
     }
 
-    const isCouponExist = await couponRepo.getCoupon(coupon.coupon_id);
+    const isCouponExist = await couponRepo.getCoupon(issuedCoupon.coupon_id);
     if (!isCouponExist) {
       return null;
     }
 
     return await userCouponRepo.createUserCoupon({
       user_id,
-      coupon_id: coupon.coupon_id,
+      coupon_id: issuedCoupon.coupon_id,
       is_valid: true,
-      serial_number: coupon.serial_number,
+      code,
     });
+  }
+
+  async getOrCreateMissionCoupon(user_id: number) {
+    const issuedCouponRepo = IssuedCouponRepository();
+    const MISSION_COUPON_ID = 3;
+
+    const missionCupon = await issuedCouponRepo.findIssuedCoupon({
+      user_id,
+      coupon_id: MISSION_COUPON_ID,
+    });
+
+    if (missionCupon) {
+      return missionCupon.code;
+    }
+
+    const couponCode = randomUUID();
+    await issuedCouponRepo.createIssuedCoupon({
+      coupon_id: MISSION_COUPON_ID,
+      code: couponCode,
+      user_id,
+    });
+
+    return couponCode;
   }
 }
 

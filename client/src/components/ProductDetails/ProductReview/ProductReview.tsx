@@ -23,6 +23,7 @@ import Thung from '@/components/Thung';
 import { ResponseError } from '@/components/Shared/Error';
 import { ReviewSkeleton } from '@/components/Skeleton/ProductSkeleton/';
 import { getOrderByProductId } from '@/lib/api/order';
+import useMission from '@/hooks/useMission';
 
 // 페이지 당 리뷰 노출 개수
 
@@ -34,6 +35,8 @@ const ProductReview = () => {
   const [isReviewOpen, toggleReviewModal] = useModal(false);
   const [isImageOpen, toggleImageModal] = useModal(false);
   const [user] = useRecoilState(userState);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setMissionList] = useMission();
 
   const {
     data: reviews,
@@ -69,6 +72,7 @@ const ProductReview = () => {
 
   const handleOnClickImage = (image: string) => {
     setSelectedImage(image);
+    setMissionList('imageView', true);
     toggleImageModal();
   };
 

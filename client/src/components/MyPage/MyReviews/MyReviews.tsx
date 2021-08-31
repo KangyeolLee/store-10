@@ -28,6 +28,7 @@ import useModal from '@/hooks/useModal';
 import { Link } from '@/lib/Router';
 import Dropdown from '@/components/Shared/Dropdown';
 import Thung from '@/components/Thung';
+import { ReviewSkeleton } from '@/components/Skeleton/ProductSkeleton';
 
 const MyReviews = () => {
   const topRef = useRef<HTMLDivElement>(null);
@@ -46,7 +47,7 @@ const MyReviews = () => {
   }
 
   if (isLoading || !data) {
-    return <div>loading</div>;
+    return <ReviewSkeleton />;
   }
 
   const handleRemoveReview = (target: number) => {

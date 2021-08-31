@@ -12,6 +12,7 @@ import { PAGE_LIMIT } from '@/utils/constant/offsetLimit';
 import useModal from '@/hooks/useModal';
 import { RequestModal, ReviewModal } from '@/components/Shared/Modal';
 import DeliveryModal from '@/components/Shared/Modal/DeliveryModal';
+import useMission from '@/hooks/useMission';
 
 const OrderHistory = ({}) => {
   const topRef = useRef<HTMLDivElement>(null);
@@ -25,6 +26,7 @@ const OrderHistory = ({}) => {
   const [seletedReview, setSelectedReview] = useState(0);
   const [selectedQuestion, setSelectedQuestion] = useState(0);
   const [selectedOrderId, setSelectedOrderId] = useState(0);
+  const [_, setMissionList] = useMission();
   const { data } = useGetOrders(selectedPeriod);
 
   useEffect(() => {
@@ -39,7 +41,10 @@ const OrderHistory = ({}) => {
 
   useEffect(() => {
     handleOnClickPage(0, true);
-  }, [selectedStatus, handleOnClickPage]);
+    if (selectedStatus) {
+      setMissionList('orderHistoryFilter', true);
+    }
+  }, [selectedStatus, handleOnClickPage, setMissionList]);
 
   const handleOnClickItemReview = (target: number) => {
     setSelectedReview(target);
@@ -53,6 +58,7 @@ const OrderHistory = ({}) => {
 
   const handleOnClieItemDelivery = (target: number) => () => {
     setSelectedOrderId(target);
+    setMissionList('checkDelivery', true);
     toggleDeliveryModal();
   };
 

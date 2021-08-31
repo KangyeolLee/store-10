@@ -4,7 +4,7 @@ import Button from '@/components/Shared/Button';
 import { IUserCoupon } from '@/types';
 import { SelectedSVG } from '@/assets/svgs';
 import Coupon from '@/components/Shared/Coupon';
-import Title from '../../Title';
+import Title from '@/components/Shared/Title';
 
 interface IProps {
   toggleModal: () => void;
@@ -33,7 +33,7 @@ const CouponModal = ({
 
   return (
     <S.CouponModalLayout toggleModal={toggleModal}>
-      <Title level={4}>보유 쿠폰</Title>
+      <Title level={4}>보유 쿠폰 ({coupons?.length ?? 0})</Title>
       <S.CouponModal>
         {(coupons?.slice(0) || []).map((coupon) => {
           const isSelected = selectedCoupon === coupon;
@@ -45,6 +45,7 @@ const CouponModal = ({
             >
               {isSelected && <SelectedSVG width={120} height={120} />}
               <Coupon
+                className={isSelected ? 'selected-coupon' : ''}
                 name={coupon.name}
                 amount={coupon.amount}
                 isValid={coupon.is_valid}

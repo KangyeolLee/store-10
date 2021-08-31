@@ -89,6 +89,7 @@ export const CouponDetail = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  gap: 2rem;
 
   ${({ theme }) => theme.mediaScreen.phone`
     flex-direction: column-reverse;
@@ -124,6 +125,10 @@ export const CouponTail = styled.div<ValidCoupon>`
   background-color: ${({ isValid, theme }) =>
     isValid ? theme.color.primary3 : '#999'};
 
+  ${({ theme }) => theme.mediaScreen.mphone`
+    width: 3.5rem;      
+  `}
+
   &::after {
     content: '';
     position: absolute;
@@ -135,5 +140,10 @@ export const CouponTail = styled.div<ValidCoupon>`
     top: 50%;
     left: -50%;
     transform: translateY(-50%);
+
+    ${({ theme }) => theme.mediaScreen.mphone`
+      width: 3.5rem;   
+      height: 3.5rem;   
+    `}
   }
 `;

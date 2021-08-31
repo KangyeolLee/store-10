@@ -11,6 +11,7 @@ import { useCreateReview } from '@/hooks/queries/product';
 import { useParams } from '@/lib/Router';
 import { validateReview } from '@/utils/validator';
 import { compressImageFile } from '@/utils/helper';
+import useMission from '@/hooks/useMission';
 
 interface ReviewModalProps {
   toggleModal: () => void;
@@ -25,6 +26,8 @@ const ReviewModal = ({ toggleModal, selected }: ReviewModalProps) => {
   const [content, setContent] = useState('');
   const [contentError, setContentError] = useState(false);
   const [ratingError, setRatingError] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setMissionList] = useMission();
   const { mutate } = useCreateReview();
   const {
     fileRef,
@@ -67,6 +70,7 @@ const ReviewModal = ({ toggleModal, selected }: ReviewModalProps) => {
 
     mutate(formData);
 
+    setMissionList('createReview', true);
     toggleModal();
   };
 

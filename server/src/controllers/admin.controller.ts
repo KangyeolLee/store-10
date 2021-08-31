@@ -6,12 +6,13 @@ import adminService from '@/services/admin.service';
 
 class AdminController {
   async generateCoupon(req: Request, res: Response) {
-    const { password, couponId } = req.body;
+    const { password, couponId, user_id } = req.body;
+
     //TODO: 이것은 임시 어드민 체크
     if (config.ADMIN_PASSWORD !== password) {
       return ApiResponse(res, HttpStatusCode.UNAUTHORIZED, '어림 없지!');
     }
-    const coupon = await adminService.generateCoupon(couponId);
+    const coupon = await adminService.generateCoupon(couponId, user_id);
     if (!coupon) {
       return ApiResponse(res, HttpStatusCode.UNAUTHORIZED, '어림 없지 2!');
     }

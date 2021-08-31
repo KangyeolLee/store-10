@@ -8,11 +8,14 @@ import contentParser from '@/utils/contentParser';
 import { ResponseError } from '@/components/Shared/Error';
 import Spinner from '@/components/Shared/Spinner';
 import Image from '@/components/Shared/Image';
+import useMission from '@/hooks/useMission';
 
 const ProductDescription = () => {
   const { id } = useParams().params;
   const [isLoaded, setIsLoaded] = useState(false);
   const { data, isLoading, error } = useGetProductById(id);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setMissionList] = useMission();
 
   if (error) {
     return <ResponseError message={error.message} />;
@@ -27,6 +30,7 @@ const ProductDescription = () => {
   }
 
   const handleOnClickMoreButton = () => {
+    setMissionList('moreDescription', true);
     setIsLoaded(true);
   };
 

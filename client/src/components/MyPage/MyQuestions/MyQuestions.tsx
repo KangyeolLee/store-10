@@ -16,6 +16,7 @@ import { RequestUpdateModal } from '@/components/Shared/Modal';
 import { notify } from '@/components/Shared/Toastify';
 import Thung from '@/components/Thung';
 import Title from '@/components/Shared/Title';
+import { ReviewSkeleton } from '@/components/Skeleton/ProductSkeleton';
 
 const MyQuestions = () => {
   const topRef = useRef<HTMLDivElement>(null);
@@ -27,7 +28,7 @@ const MyQuestions = () => {
   const { mutate: removeQuestion } = useDeleteQuestion();
 
   if (isLoading || !data) {
-    return <div>loading...</div>;
+    return <ReviewSkeleton />;
   }
 
   if (error) {

@@ -2,9 +2,9 @@ import React from 'react';
 import { ProductInfo, ProductOrder } from '@/components/ProductDetails/styles';
 import * as S from '../styles';
 
-const InfoSkeleton = () => {
+const InfoSkeleton = ({ className }: { className?: string }) => {
   return (
-    <ProductInfo>
+    <ProductInfo className={className}>
       <S.SkeletonThumbnail />
       <ProductOrder>
         <S.SkeletonProductTitle />

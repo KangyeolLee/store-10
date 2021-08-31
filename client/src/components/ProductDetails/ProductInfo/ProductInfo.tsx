@@ -40,6 +40,7 @@ const ProductInfo = () => {
   const [value, handleOnChnage, handleClickOnMinus, handleClickOnPlus] =
     useNumberInput(1);
   const onClickCart = () => {
+    setMissionList('addCart', true);
     cartMutate(
       {
         count: value,
@@ -47,6 +48,7 @@ const ProductInfo = () => {
       },
       {
         onSuccess() {
+          setMissionList('addCart', true);
           toggleModal();
         },
       }
@@ -75,7 +77,7 @@ const ProductInfo = () => {
   }
 
   if (isLoading || !data) {
-    return <InfoSkeleton />;
+    return <InfoSkeleton className="container" />;
   }
 
   const { details, thumbnails } = data;

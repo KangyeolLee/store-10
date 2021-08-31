@@ -11,6 +11,7 @@ import { useParams } from '@/lib/Router';
 import Checkbox from '@/components/Shared/Checkbox';
 import { useCreateQuestion } from '@/hooks/queries/product';
 import { validateQuestion } from '@/utils/validator';
+import useMission from '@/hooks/useMission';
 
 interface RequestModalProps {
   toggleModal: () => void;
@@ -25,6 +26,8 @@ const RequestModal = ({ toggleModal, selected }: RequestModalProps) => {
   const [secret, setSecret] = useState(false);
   const [contentError, setContentError] = useState(false);
   const [titleError, setTitleError] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setMissionList] = useMission();
   const { mutate } = useCreateQuestion();
 
   const handleOnSubmit = (e: React.FormEvent) => {
@@ -49,6 +52,7 @@ const RequestModal = ({ toggleModal, selected }: RequestModalProps) => {
 
     mutate(question);
 
+    setMissionList('createQuestion', true);
     toggleModal();
   };
 

@@ -1,4 +1,5 @@
 import { SearchSVG } from '@/assets/svgs';
+import useMission from '@/hooks/useMission';
 import useRecentSearch from '@/hooks/useRecentSearch';
 import { getElasticProducts } from '@/lib/api/product';
 import { useHistory } from '@/lib/Router';
@@ -16,6 +17,7 @@ const Search = ({ toggleOpen }: IProps) => {
   const [recentItems, setRecentItems, removeRecentItem] = useRecentSearch();
   const [searchData, setSearchDatas] = useState<ISearchData[]>([]);
   const { historyPush } = useHistory();
+  const [, setMissionList] = useMission();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const productSearch = useCallback(async (searchText: string) => {
@@ -29,12 +31,13 @@ const Search = ({ toggleOpen }: IProps) => {
   const inputKeypressHandler = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.code == 'Enter') {
+        setMissionList('search', true);
         setRecentItems(searchValue);
         historyPush(`/search/${searchValue}`);
         toggleOpen();
       }
     },
-    [historyPush, searchValue, setRecentItems, toggleOpen]
+    [historyPush, searchValue, setMissionList, setRecentItems, toggleOpen]
   );
 
   const inputChangeHandler = useCallback(

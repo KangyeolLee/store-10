@@ -6,11 +6,12 @@ interface ICoupon {
   name: string;
   amount: number;
   isValid: boolean;
+  className?: string;
 }
 
-const Coupon = ({ name, amount, isValid }: ICoupon) => {
+const Coupon = ({ name, amount, isValid, className }: ICoupon) => {
   return (
-    <S.Coupon>
+    <S.Coupon className={className}>
       <S.CouponImageWrapper>
         <img
           src="https://store-10.s3.ap-northeast-2.amazonaws.com/test/coupon.png"
@@ -27,7 +28,7 @@ const Coupon = ({ name, amount, isValid }: ICoupon) => {
           <Logo width={100} />
           <S.Discount isValid={isValid}>
             {amount}
-            <span> %</span>
+            <span>%</span>
           </S.Discount>
         </S.CouponDetail>
       </S.CouponBody>

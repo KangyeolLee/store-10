@@ -29,6 +29,9 @@ export const ModalInner = styled.div`
   height: 50%;
   overflow-y: auto;
   overflow-x: hidden;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const ModalWrapper = styled.div<IModalWrapperProps>`

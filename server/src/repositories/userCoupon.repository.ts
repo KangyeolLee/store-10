@@ -6,7 +6,7 @@ interface IUserCoupon {
   user_id: number;
   coupon_id: number;
   is_valid: boolean;
-  serial_number: string;
+  code: string;
 }
 
 @EntityRepository(UserCoupon)

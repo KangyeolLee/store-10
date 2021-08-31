@@ -13,5 +13,5 @@ export class UserCoupon extends InitEntity {
   user_id: number;
 
   @Column()
-  serial_number: string;
+  code: string;
 }

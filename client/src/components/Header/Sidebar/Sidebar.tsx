@@ -7,6 +7,7 @@ import { userState } from '@/recoil/user';
 import { useHistory } from '@/lib/Router';
 import { ICategory } from '@/types';
 import { CategoryList } from '@/recoil/category';
+import useMission from '@/hooks/useMission';
 
 interface Props {
   isOpen?: boolean;
@@ -18,6 +19,7 @@ const Sidebar = ({ ...props }: Props) => {
   const [user, setUser] = useRecoilState(userState);
   const closeSidebar = () => setIsOpen(false);
   const { historyPush } = useHistory();
+  const [, setMissionList] = useMission();
   const categories = useRecoilValue(CategoryList);
 
   const onClickLogout = async () => {
@@ -27,6 +29,7 @@ const Sidebar = ({ ...props }: Props) => {
   };
 
   const categoryRouterPush = (id: number) => {
+    setMissionList('category', true);
     closeSidebar();
     historyPush(`/category/${id}`);
   };

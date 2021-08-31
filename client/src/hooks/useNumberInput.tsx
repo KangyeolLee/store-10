@@ -1,8 +1,11 @@
 import { useCallback, useState } from 'react';
 import notify from '@/components/Shared/Toastify/notify';
+import useMission from './useMission';
 
 const useNumberInput = (initalValue?: number) => {
   const [value, setValue] = useState(initalValue ?? 0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setMissionList] = useMission();
 
   const handleClickOnPlus = useCallback(
     () => setValue((value) => value + 1),
@@ -26,6 +29,7 @@ const useNumberInput = (initalValue?: number) => {
       }
 
       if (+value % 1 !== 0) {
+        setMissionList('hidden2', true);
         return notify('error', '소수점은 입력하실 수 없어요!');
       }
 

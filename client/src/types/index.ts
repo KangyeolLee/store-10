@@ -233,6 +233,22 @@ export interface IUserCoupon {
 export interface IMissionList {
   login?: boolean;
   bookmark?: boolean;
+  moreDescription?: boolean;
+  pay?: boolean;
+  addCart?: boolean;
+  checkDelivery?: boolean;
+  changeAddress?: boolean;
+  orderHistoryFilter?: boolean;
+  search?: boolean;
+  category?: boolean;
+  createReview?: boolean;
+  updateReview?: boolean;
+  createQuestion?: boolean;
+  updateQuestion?: boolean;
+  imageView?: boolean;
+  noticeView?: boolean;
+  hidden1?: boolean;
+  hidden2?: boolean;
 }
 
 export type MissionListKeys = keyof IMissionList;

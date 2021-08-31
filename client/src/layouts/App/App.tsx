@@ -33,7 +33,6 @@ import useGlobalTheme from '@/hooks/useGlobalTheme';
 import useModal from '@/hooks/useModal';
 import MissionModal from '@/components/Shared/Modal/MissionModal';
 import useMission from '@/hooks/useMission';
-import { notify } from '@/components/Shared/Toastify';
 
 const App = () => {
   const [themeMode, toggleMode, themeString] = useGlobalTheme();
@@ -55,7 +54,7 @@ const App = () => {
   useEffect(() => {
     if (user) {
       setLoading(false);
-      if(!user.is_oauth && user.id !== 36) {
+      if (!user.is_oauth && user.id !== 36) {
         setMissionList('login', true);
       }
     }
@@ -67,7 +66,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={themeMode}>
-      <Suspense fallback={<div>loading</div>}>
+      <Suspense fallback={loading ? <Loading /> : null}>
         <QueryErrorResetBoundary>
           {({ reset }) => (
             <ErrorBoundary
@@ -76,42 +75,38 @@ const App = () => {
                 <Error resetErrorBoundary={resetErrorBoundary} />
               )}
             >
-              {loading ? (
-                <Loading />
-              ) : (
-                <S.RootWrapper>
-                  <Header />
-                  <Switch>
-                    <Route path="/" component={Main} />
-                    <Route path="/select_auth" component={SelectAuth} />
-                    <Route path="/approval/:authtype" component={Approval} />
-                    <Route path="/bookmark" component={Bookmark} />
-                    <Route path="/category/:categoryId" component={Category} />
-                    <Route path="/search/:search" component={Search} />
-                    <Route path="/signup" component={SignUp} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/detail/:id" component={Detail} />
-                    <Route path="/notice" component={Notice} />
-                    <Route path="/privacy" component={TermsOfPrivacy} />
-                    <Route path="/terms" component={TermsOfUse} />
-                    <Route path="/vendor" component={Vendor} />
-                    <Route path="/cart" component={ShoppingCart} />
-                    <Route path="/mypage" component={MyPage} />
-                    <Route path="/order/:id/paid" component={Paid} />
-                    <Route path="/order/:id" component={Order} />
-                    <Route path="/*" component={NotFound} />
-                  </Switch>
-                  <Footer />
-                  <ThemeChanger
-                    toggleMode={toggleMode}
-                    currentTheme={themeString}
-                    toggleMissionModal={toggleMissionModal}
-                  />
-                  {isOpenMissionModal && (
-                    <MissionModal toggleModal={toggleMissionModal} />
-                  )}
-                </S.RootWrapper>
-              )}
+              <S.RootWrapper>
+                <Header />
+                <Switch>
+                  <Route path="/" component={Main} />
+                  <Route path="/select_auth" component={SelectAuth} />
+                  <Route path="/approval/:authtype" component={Approval} />
+                  <Route path="/bookmark" component={Bookmark} />
+                  <Route path="/category/:categoryId" component={Category} />
+                  <Route path="/search/:search" component={Search} />
+                  <Route path="/signup" component={SignUp} />
+                  <Route path="/login" component={Login} />
+                  <Route path="/detail/:id" component={Detail} />
+                  <Route path="/notice" component={Notice} />
+                  <Route path="/privacy" component={TermsOfPrivacy} />
+                  <Route path="/terms" component={TermsOfUse} />
+                  <Route path="/vendor" component={Vendor} />
+                  <Route path="/cart" component={ShoppingCart} />
+                  <Route path="/mypage" component={MyPage} />
+                  <Route path="/order/:id/paid" component={Paid} />
+                  <Route path="/order/:id" component={Order} />
+                  <Route path="/*" component={NotFound} />
+                </Switch>
+                <Footer />
+                <ThemeChanger
+                  toggleMode={toggleMode}
+                  currentTheme={themeString}
+                  toggleMissionModal={toggleMissionModal}
+                />
+                {isOpenMissionModal && (
+                  <MissionModal toggleModal={toggleMissionModal} />
+                )}
+              </S.RootWrapper>
             </ErrorBoundary>
           )}
         </QueryErrorResetBoundary>
