@@ -55,7 +55,7 @@ const ShoppingCartList = ({
   };
 
   return (
-    <div>
+    <div style={{ flex: 1 }}>
       <S.ShoppingCartHeader>
         {!disabled && (
           <>

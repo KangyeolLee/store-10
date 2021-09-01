@@ -13,6 +13,7 @@ export const ShoppingCart = styled.div`
   }
   .cart-wrapper {
     display: flex;
+    justify-content: space-between;
     gap: 2rem;
 
     ${({ theme }) => theme.mediaScreen.btw_pc_tab`
